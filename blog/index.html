@@ -1,0 +1,32 @@
+---
+layout: default
+title: Blog
+description: Gestalt Medya'daki tüm yazılar.
+---
+<section class="wrap page-head">
+  <p class="kicker mono">arşiv // {{ site.posts.size }} kayıt</p>
+  <h1 class="page-title">Blog</h1>
+  <p class="lead">Tüm yazılar, en yeniden eskiye. Aramak için yazmaya başla.</p>
+
+  <div class="search">
+    <span class="mono dim" aria-hidden="true">&gt;_</span>
+    <input id="post-search" type="search" placeholder="yazılarda ara…" autocomplete="off" aria-label="Yazılarda ara">
+  </div>
+
+  {% assign all_tags = site.tags | sort %}
+  {% if all_tags.size > 0 %}
+  <div class="tags tag-filter" role="group" aria-label="Etikete göre filtrele">
+    <button class="tag is-active" data-tag="">#hepsi</button>
+    {% for t in all_tags %}<button class="tag" data-tag="{{ t[0] | slugify }}">#{{ t[0] }}</button>{% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<section class="wrap section section--tight">
+  <div class="cards" id="post-list">
+    {% for post in site.posts %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </div>
+  <p class="empty mono" id="no-results" hidden>// eşleşen sinyal bulunamadı.</p>
+</section>

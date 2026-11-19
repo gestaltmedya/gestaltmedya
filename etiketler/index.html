@@ -1,0 +1,31 @@
+---
+layout: default
+title: Etiketler
+description: Yazılar konularına göre.
+---
+<section class="wrap narrow page-head">
+  <p class="kicker mono">dizin // konulara göre</p>
+  <h1 class="page-title">Etiketler</h1>
+  {% assign all_tags = site.tags | sort %}
+  <div class="tags">
+    {% for t in all_tags %}<a class="tag" href="#{{ t[0] | slugify }}">#{{ t[0] }} <span class="dim">{{ t[1].size }}</span></a>{% endfor %}
+  </div>
+</section>
+
+<section class="wrap narrow section section--tight">
+  {% for t in all_tags %}
+  <div class="tag-group" id="{{ t[0] | slugify }}">
+    <h2 class="tag-group-title">#{{ t[0] }}</h2>
+    <ul class="post-list">
+      {% for post in t[1] %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          <time class="mono dim">{{ post.date | date: '%d.%m.%Y' }}</time>
+          <span>{{ post.title }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</section>

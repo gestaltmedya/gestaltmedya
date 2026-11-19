@@ -1,0 +1,59 @@
+# =========================================================
+#  GESTALT MEDYA — site ayarları
+#  Bu dosyayı değiştirdikten sonra site 1-2 dakikada güncellenir.
+# =========================================================
+
+title: "Gestalt Medya"
+tagline: "Bütün, parçaların toplamından fazlasıdır."
+description: "Gestalt Medya — medya, teknoloji, kültür ve zihin üzerine yazılar."
+url: "https://www.gestaltmedya.com"
+baseurl: ""
+lang: tr_TR
+timezone: Europe/Istanbul
+
+author:
+  name: "Gestalt Medya"
+  # email: ornek@gestaltmedya.com
+
+# Sosyal medya bağlantıları (boş bırakılanlar gösterilmez)
+social:
+  instagram: ""      # ör: gestaltmedya
+  x: ""              # ör: gestaltmedya
+  youtube: ""        # ör: @gestaltmedya
+  linkedin: ""       # ör: company/gestaltmedya
+  email: ""          # ör: iletisim@gestaltmedya.com
+
+# Ana sayfada gösterilecek son yazı sayısı
+home_posts: 6
+
+# Yazı adresleri: gestaltmedya.com/blog/yazi-adi/
+permalink: /blog/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope: { path: "", type: posts }
+    values:
+      layout: post
+  - scope: { path: "" }
+    values:
+      layout: page
+
+exclude:
+  - README.md
+  - YAZI-REHBERI.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle

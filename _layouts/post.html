@@ -1,0 +1,64 @@
+---
+layout: default
+body_class: post-page
+---
+{% assign words = content | number_of_words %}
+{% assign minutes = words | divided_by: 180 | plus: 1 %}
+<div class="read-progress" aria-hidden="true"><span></span></div>
+
+<article class="post">
+  <header class="wrap narrow post-head">
+    <a class="back mono" href="{{ '/blog/' | relative_url }}">← tüm yazılar</a>
+    <div class="meta mono">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d.%m.%Y' }}</time>
+      <span class="sep">//</span>
+      <span>{{ minutes }} dk okuma</span>
+      {% if page.author %}<span class="sep">//</span><span>{{ page.author }}</span>{% endif %}
+    </div>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
+    {% if page.tags.size > 0 %}
+    <div class="tags">
+      {% for t in page.tags %}<a class="tag" href="{{ '/etiketler/' | relative_url }}#{{ t | slugify }}">#{{ t }}</a>{% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  {% if page.image %}
+  <figure class="wrap post-cover">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
+  </figure>
+  {% else %}
+  <div class="wrap narrow"><div class="divider" aria-hidden="true"></div></div>
+  {% endif %}
+
+  <div class="wrap narrow prose">
+    {{ content }}
+  </div>
+
+  <footer class="wrap narrow post-foot">
+    <div class="share">
+      <span class="mono dim">paylaş_</span>
+      <a href="https://x.com/intent/post?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener">X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">LinkedIn</a>
+      {% capture wa %}{{ page.title }} {{ page.url | absolute_url }}{% endcapture %}
+      <a href="https://wa.me/?text={{ wa | url_encode }}" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="copy-link" type="button" data-url="{{ page.url | absolute_url }}">Bağlantıyı kopyala</button>
+    </div>
+
+    <nav class="post-nav">
+      {% if page.previous %}
+      <a class="post-nav-item" href="{{ page.previous.url | relative_url }}">
+        <span class="mono dim">← önceki</span>
+        <span>{{ page.previous.title }}</span>
+      </a>
+      {% else %}<span></span>{% endif %}
+      {% if page.next %}
+      <a class="post-nav-item post-nav-item--next" href="{{ page.next.url | relative_url }}">
+        <span class="mono dim">sonraki →</span>
+        <span>{{ page.next.title }}</span>
+      </a>
+      {% endif %}
+    </nav>
+  </footer>
+</article>

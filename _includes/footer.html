@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">GESTALT<span class="dim">://medya</span></span>
+      <p class="footer-tag">{{ site.tagline }}</p>
+    </div>
+
+    <div class="footer-links">
+      {% if site.social.instagram != "" %}<a href="https://instagram.com/{{ site.social.instagram }}" rel="noopener" target="_blank">Instagram</a>{% endif %}
+      {% if site.social.x != "" %}<a href="https://x.com/{{ site.social.x }}" rel="noopener" target="_blank">X</a>{% endif %}
+      {% if site.social.youtube != "" %}<a href="https://youtube.com/{{ site.social.youtube }}" rel="noopener" target="_blank">YouTube</a>{% endif %}
+      {% if site.social.linkedin != "" %}<a href="https://linkedin.com/{{ site.social.linkedin }}" rel="noopener" target="_blank">LinkedIn</a>{% endif %}
+      {% if site.social.email != "" %}<a href="mailto:{{ site.social.email }}">E-posta</a>{% endif %}
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© {{ 'now' | date: '%Y' }} {{ site.title }}</span>
+    <span class="mono dim">sinyal: <span class="pulse-dot"></span> çevrimiçi</span>
+  </div>
+</footer>
