@@ -113,7 +113,7 @@ img { max-width: 100%; height: auto; display: block; }
 .logo-text { font-family: var(--f-logo); font-weight: 800; font-size: 1.15rem; letter-spacing: .1em; }
 .logo-sub { font-family: var(--f-logo); font-weight: 600; font-size: 1.15rem; color: var(--chrome-2); letter-spacing: .1em; text-shadow: 0 0 12px rgba(139,92,255,.45); }
 .site-header .logo-text {
-  background: linear-gradient(100deg, #fff 0%, #cfd2ff 40%, var(--cyan) 70%, var(--magenta) 100%);
+  background: linear-gradient(100deg, #fff 0%, #cfd2ff 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   filter: drop-shadow(0 0 14px rgba(139, 92, 255, .35));
 }
