@@ -5,10 +5,10 @@ title: Ana Sayfa
 ---
 <section class="hero">
   <div class="wrap hero-inner">
-    <p class="kicker mono"><span class="pulse-dot"></span> gestaltmedya.com // sinyal alındı</p>
+    <p class="kicker mono"><span class="pulse-dot"></span> sinyal alındı</p>
     <h1 class="hero-title">
       <span class="glitch" data-text="GESTALT">GESTALT</span>
-      <span class="hero-title-sub">medya</span>
+      <span class="hero-title-sub" aria-label="medya"><span>M</span><span>E</span><span>D</span><span>Y</span><span>A</span></span>
     </h1>
     <p class="hero-lead">
       <span class="typed" data-lines="Bütün, parçaların toplamından fazlasıdır.|Görünenin ardındakini okuyoruz.|Medya · teknoloji · kültür · zihin"></span><span class="caret">▍</span>
@@ -21,37 +21,50 @@ title: Ana Sayfa
   <div class="grid-floor" aria-hidden="true"></div>
 </section>
 
-<section class="wrap section">
-  <div class="section-head">
-    <h2 class="section-title"><span class="mono dim">01 /</span> Son yazılar</h2>
-    <a class="link-arrow mono" href="{{ '/blog/' | relative_url }}">tümü →</a>
+{% if site.posts.size > 0 %}
+{% comment %}
+  ÖNE ÇIKAN: en yeni yazının tarihinden geriye featured_window_days günlük pencere.
+  Pencere en yeni yazıya bağlı; yeni yazı gelmezse kaymaz, öne çıkan yerinde kalır.
+  Varsayılan = penceredeki en yeni yazı (ya da "featured: true" ile sabitlenen).
+  GoatCounter açıksa tarayıcı penceredeki yazıların okunma sayısına bakıp en çok okunanı öne alır.
+{% endcomment %}
+{% assign window = site.featured_window_days | default: 14 | times: 86400 %}
+{% assign newest_s = site.posts.first.date | date: '%s' | plus: 0 %}
+{% assign cutoff = newest_s | minus: window %}
+{% assign pinned = site.posts | where: "featured", true | first %}
+{% if pinned %}{% assign feat = pinned %}{% else %}{% assign feat = site.posts.first %}{% endif %}
+{% assign feat_words = feat.content | number_of_words %}
+<section class="wrap section section--home">
+  <a class="featured" href="{{ feat.url | relative_url }}" id="featured"{% if pinned %} data-pinned="1"{% endif %}>
+    <div class="featured-glow" aria-hidden="true"></div>
+    <p class="kicker mono">öne çıkan // <span data-f="date">{{ feat.date | date: '%d.%m.%Y' }}</span> // <span data-f="min">{{ feat_words | divided_by: 180 | plus: 1 }}</span> dk</p>
+    <h2 class="featured-title" data-f="title">{{ feat.title }}</h2>
+    <p class="featured-excerpt" data-f="excerpt">{{ feat.description | default: feat.excerpt | strip_html | truncatewords: 40 }}</p>
+    <span class="link-arrow mono">okumaya başla →</span>
+  </a>
+  <script type="application/json" id="featured-candidates" data-gc="{{ site.goatcounter }}">[{% assign sep = "" %}{% for post in site.posts %}{% assign ps = post.date | date: '%s' | plus: 0 %}{% if ps < cutoff %}{% break %}{% endif %}{% assign w = post.content | number_of_words %}{{ sep }}{"url":{{ post.url | relative_url | jsonify }},"title":{{ post.title | jsonify }},"date":"{{ post.date | date: '%d.%m.%Y' }}","min":{{ w | divided_by: 180 | plus: 1 }},"excerpt":{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncatewords: 40 | jsonify }}}{% assign sep = "," %}{% endfor %}]</script>
+
+  {% comment %} Son yazılar: öne çıkan dışındaki en yeni yazılar (bir fazlası basılır, fazlalık gizlenir) {% endcomment %}
+  {% assign limit = site.home_posts | plus: 1 %}
+  {% assign hidden_one = false %}
+  <div class="cards" id="latest">
+    {% for post in site.posts limit: limit %}
+      {% if post.url == feat.url %}{% assign hidden_one = true %}<div class="card-slot" data-url="{{ post.url | relative_url }}" hidden>{% include post-card.html post=post %}</div>
+      {% elsif forloop.last and hidden_one == false %}<div class="card-slot" data-url="{{ post.url | relative_url }}" hidden>{% include post-card.html post=post %}</div>
+      {% else %}<div class="card-slot" data-url="{{ post.url | relative_url }}">{% include post-card.html post=post %}</div>{% endif %}
+    {% endfor %}
   </div>
-
-  {% if site.posts.size > 0 %}
-    {% assign first = site.posts.first %}
-    {% assign words = first.content | number_of_words %}
-    <a class="featured" href="{{ first.url | relative_url }}">
-      <div class="featured-glow" aria-hidden="true"></div>
-      <p class="kicker mono">öne çıkan // {{ first.date | date: '%d.%m.%Y' }} // {{ words | divided_by: 180 | plus: 1 }} dk</p>
-      <h3 class="featured-title">{{ first.title }}</h3>
-      <p class="featured-excerpt">{{ first.description | default: first.excerpt | strip_html | truncatewords: 40 }}</p>
-      <span class="link-arrow mono">okumaya başla →</span>
-    </a>
-
-    <div class="cards">
-      {% for post in site.posts offset: 1 limit: site.home_posts %}
-        {% include post-card.html post=post %}
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="empty mono">// henüz yazı yok. _posts klasörüne ilk yazını ekle.</p>
+  {% if site.posts.size > limit %}
+  <div class="section-foot"><a class="btn btn--ghost" href="{{ '/blog/' | relative_url }}">Tüm yazılar →</a></div>
   {% endif %}
 </section>
+{% else %}
+<section class="wrap section"><p class="empty mono">// henüz yazı yok. _posts klasörüne ilk yazını ekle.</p></section>
+{% endif %}
 
 <section class="wrap section">
   <div class="manifesto">
-    <h2 class="section-title"><span class="mono dim">02 /</span> Neden “Gestalt”?</h2>
-    <p>Gestalt, parçaları tek tek değil, bir bütün olarak algıladığımızı söyler. Biz de haberleri, trendleri ve fikirleri ayrı ayrı değil; aralarındaki bağlarla birlikte okumaya çalışıyoruz.</p>
+    <p><strong>Gestalt</strong>, parçaları tek tek değil, bir bütün olarak algıladığımızı söyler. Biz de haberleri, trendleri ve fikirleri ayrı ayrı değil; aralarındaki bağlarla birlikte okumaya çalışıyoruz.</p>
     <div class="pillars">
       <div class="pillar"><span class="pillar-n mono">◇</span><h3>Medya</h3><p>Ekranların ve anlatıların nasıl şekillendiği.</p></div>
       <div class="pillar"><span class="pillar-n mono">◇</span><h3>Teknoloji</h3><p>Geleceğin bugüne sızan sinyalleri.</p></div>

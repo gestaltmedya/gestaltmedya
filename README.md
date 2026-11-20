@@ -129,3 +129,9 @@ bundle install
 bundle exec jekyll serve
 ```
 Sonra `http://localhost:4000` adresini aç.
+
+
+## Öne çıkan yazı nasıl seçilir?
+- Ana sayfadaki büyük kutu, **en yeni yazının tarihinden geriye 14 gün** içinde yayınlanan yazılardan en çok okunanı gösterir. Yeni yazı gelmezse pencere kaymaz, öne çıkan yerinde kalır.
+- Okunma sayısı için `_config.yml` içindeki `goatcounter:` satırına GoatCounter kodunu yaz. Boşken öne çıkan, en yeni yazıdır.
+- Bir yazıyı elle sabitlemek için yazının en üstündeki ayar bölümüne `featured: true` ekle.

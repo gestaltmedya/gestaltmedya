@@ -13,6 +13,50 @@
     });
   }
 
+  /* Ana sayfa: büyük başlık ekrandan çıkınca üstte küçük logo belirsin */
+  var header = document.querySelector(".site-header.is-home");
+  var heroTitle = document.querySelector(".hero-title");
+  if (header && heroTitle && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (en) {
+      header.classList.toggle("is-scrolled", !en[0].isIntersecting);
+    }, { rootMargin: "-70px 0px 0px 0px" }).observe(heroTitle);
+  }
+
+  /* Öne çıkan: penceredeki yazılar içinden en çok okunanı seç (GoatCounter) */
+  var candEl = document.getElementById("featured-candidates");
+  var feat = document.getElementById("featured");
+  if (candEl && feat && !feat.hasAttribute("data-pinned")) {
+    var gc = candEl.getAttribute("data-gc");
+    var cands = [];
+    try { cands = JSON.parse(candEl.textContent); } catch (e) {}
+    if (gc && cands.length > 1 && window.fetch) {
+      Promise.all(cands.map(function (c) {
+        return fetch("https://" + gc + ".goatcounter.com/counter/" + encodeURIComponent(c.url) + ".json")
+          .then(function (r) { return r.ok ? r.json() : { count: "0" }; })
+          .then(function (j) { return parseInt(String(j.count).replace(/\D/g, ""), 10) || 0; })
+          .catch(function () { return 0; });
+      })).then(function (counts) {
+        var best = 0; // eşitlikte en yeni kazanır (liste yeniden eskiye)
+        counts.forEach(function (n, i) { if (n > counts[best]) best = i; });
+        var c = cands[best];
+        if (c.url === feat.getAttribute("href")) return;
+        feat.setAttribute("href", c.url);
+        ["title", "date", "min", "excerpt"].forEach(function (k) {
+          var el = feat.querySelector('[data-f="' + k + '"]');
+          if (el) el.textContent = c[k];
+        });
+        /* son yazılar: yeni öne çıkanı gizle, diğerlerini göster, fazlalığı sakla */
+        var slots = Array.prototype.slice.call(document.querySelectorAll("#latest .card-slot"));
+        var shown = 0, max = slots.length - 1;
+        slots.forEach(function (sl) {
+          var hide = sl.getAttribute("data-url") === c.url || shown >= max;
+          sl.hidden = hide;
+          if (!hide) { shown++; var cd = sl.querySelector(".card"); if (cd) cd.classList.add("is-in"); }
+        });
+      });
+    }
+  }
+
   /* Ana sayfadaki yazan-silen satır */
   var typed = document.querySelector(".typed");
   if (typed) {

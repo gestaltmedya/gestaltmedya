@@ -1,23 +1,29 @@
-<header class="site-header">
+{% assign path = page.url %}
+{% assign is_home = false %}{% if path == '/' or path == '/index.html' %}{% assign is_home = true %}{% endif %}
+<header class="site-header{% if is_home %} is-home{% endif %}">
   <div class="wrap header-inner">
+    {% comment %} Ana sayfada büyük başlık zaten marka; küçük logo sadece aşağı kaydırınca belirir. Diğer sayfalarda hep görünür. {% endcomment %}
     <a class="logo" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} ana sayfa">
       <span class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="28" height="28"><path d="M16 2 29 9.5v13L16 30 3 22.5v-13z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M21 12.5h-6.5a3.5 3.5 0 0 0 0 7H21v-3.2h-3.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 32 32" width="26" height="26"><path d="M16 2 29 9.5v13L16 30 3 22.5v-13z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M21 12.5h-6.5a3.5 3.5 0 0 0 0 7H21v-3.2h-3.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </span>
       <span class="logo-text glitch" data-text="GESTALT">GESTALT</span>
-      <span class="logo-sub">medya</span>
+      <span class="logo-sub">MEDYA</span>
     </a>
 
-    <button class="nav-toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span>
-    </button>
-
     <nav id="site-nav" class="site-nav">
-      {% assign path = page.url %}
-      <a href="{{ '/' | relative_url }}" {% if path == '/' %}class="is-active"{% endif %}>Ana Sayfa</a>
+      <a href="{{ '/' | relative_url }}" {% if is_home %}class="is-active"{% endif %}>Ana Sayfa</a>
       <a href="{{ '/blog/' | relative_url }}" {% if path contains '/blog' %}class="is-active"{% endif %}>Blog</a>
       <a href="{{ '/etiketler/' | relative_url }}" {% if path contains '/etiketler' %}class="is-active"{% endif %}>Etiketler</a>
       <a href="{{ '/hakkinda/' | relative_url }}" {% if path contains '/hakkinda' %}class="is-active"{% endif %}>Hakkında</a>
     </nav>
+
+    <div class="header-social">
+      {% include social-icons.html %}
+    </div>
+
+    <button class="nav-toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
   </div>
 </header>
