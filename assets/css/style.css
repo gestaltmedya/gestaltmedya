@@ -110,10 +110,19 @@ img { max-width: 100%; height: auto; display: block; }
 /* ana sayfada küçük logo, büyük başlık ekrandan çıkınca belirir */
 .site-header.is-home:not(.is-scrolled) .logo { max-width: 0; opacity: 0; margin-right: -22px; pointer-events: none; }
 .logo:hover { text-shadow: none; color: var(--text); }
-.logo-mark { color: var(--cyan); display: grid; filter: drop-shadow(0 0 6px rgba(0,240,255,.6)); transition: transform .4s; }
-.logo:hover .logo-mark { transform: rotate(60deg); }
 .logo-text { font-family: var(--f-logo); font-weight: 800; font-size: 1.15rem; letter-spacing: .1em; }
 .logo-sub { font-family: var(--f-logo); font-weight: 600; font-size: 1.15rem; color: var(--chrome-2); letter-spacing: .1em; text-shadow: 0 0 12px rgba(139,92,255,.45); }
+.site-header .logo-text {
+  background: linear-gradient(100deg, #fff 0%, #cfd2ff 40%, var(--cyan) 70%, var(--magenta) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 14px rgba(139, 92, 255, .35));
+}
+.site-header .logo-text::before, .site-header .logo-text::after { -webkit-text-fill-color: currentColor; }
+.site-header .logo-sub {
+  background: linear-gradient(90deg, var(--chrome-1) 0%, var(--chrome-2) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none;
+  filter: drop-shadow(0 0 10px rgba(139, 92, 255, .4));
+}
 
 .site-nav { display: flex; gap: 6px; }
 .site-header.is-home:not(.is-scrolled) .site-nav { margin-left: -14px; } /* ilk butonun yazısı sayfa kenarıyla hizalı */
@@ -412,8 +421,7 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
   .header-inner { gap: 10px; }
   .header-social { gap: 8px; }
   .social-btn { width: 36px; height: 36px; }
-  .logo-mark { display: none; }
-  .logo-text, .logo-sub { font-size: 1rem; }
+    .logo-text, .logo-sub { font-size: 1rem; }
   .site-nav {
     position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 4px;
     padding: 16px; background: #07060f; box-shadow: 0 20px 40px rgba(0,0,0,.5); border-bottom: 1px solid var(--line);
