@@ -510,7 +510,18 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
 .yt-kicker { display: block; color: var(--cyan); font-size: .8rem; font-weight: 400; margin-bottom: 4px; }
 .yt-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
 .yt-item { margin: 0; }
-.yt-item figcaption { margin-top: 12px; font-family: var(--f-display); font-weight: 600; line-height: 1.3; }
+.yt-item figcaption { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+.yt-name { font-family: var(--f-display); font-weight: 600; line-height: 1.3; }
+.yt-new { display: flex; align-items: center; gap: 8px; color: var(--lime); font-size: .75rem; }
+.yt-watch { color: var(--text-3); font-size: .78rem; }
+.yt-watch:hover { color: var(--cyan); }
+/* tek video: büyük vitrin, yazı yanında */
+.yt-list--single { grid-template-columns: 1fr; }
+.yt-list--single .yt-item { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.yt-list--single figcaption { margin: 0; gap: 12px; }
+.yt-list--single .yt-name { font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.2; }
+.yt-list--single .yt-play { width: 84px; height: 84px; margin: -42px 0 0 -42px; }
+.yt-list--single .yt-play::after { left: 34px; top: 27px; border-left-width: 22px; border-top-width: 15px; border-bottom-width: 15px; }
 .yt-lite, .yt-item iframe { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
 .yt-lite { padding: 0; cursor: pointer; background: #0f0c26; }
 .yt-lite img { width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: opacity .3s, transform .5s; }
@@ -577,6 +588,7 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
   .prose { font-size: 1.04rem; }
   .author-box { flex-direction: column; gap: 14px; padding: 20px; }
   .newsletter-row { flex-direction: column; }
+  .yt-list--single .yt-item { grid-template-columns: 1fr; gap: 16px; }
   .newsletter-row .btn { justify-content: center; }
   .orb { filter: blur(70px); }
 }

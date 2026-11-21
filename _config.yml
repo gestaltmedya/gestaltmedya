@@ -36,7 +36,7 @@ featured_window_days: 14
 # Okunma sayısı için GoatCounter (ücretsiz, çerez kullanmaz).
 # goatcounter.com'da hesap açınca seçtiğin kodu buraya yaz (ör: gestaltmedya).
 # Boşken öne çıkan = penceredeki en yeni yazı.
-goatcounter: ""
+goatcounter: "onuravsar"
 
 # KATEGORİLER: her yazının başına tek bir "kategori:" yaz (ör: kategori: teknoloji).
 # Renk kartın kapağını, öne çıkan alanın ışığını ve kategori etiketini boyar.
@@ -65,13 +65,16 @@ kategoriler:
 #   Buttondown: https://buttondown.com/api/emails/embed-subscribe/KULLANICIADI
 #   Substack:   https://KULLANICIADI.substack.com/api/v1/free?nojs=true
 bulten:
-  form_url: ""
+  form_url: "https://buttondown.com/api/emails/embed-subscribe/onuravsar"
   saglayici: "Buttondown"     # gizlilik metninde adı geçer
   saglayici_ulke: "ABD"
 
 # YOUTUBE ŞERİDİ (ana sayfa). Videonun adresindeki kodu yaz: youtube.com/watch?v=BURASI
 # Boşken şerit görünmez. En yeni video en üste.
 youtube_videolar:
+  - id: "UP1tOQeiF0w"
+    baslik: "İlber Ortaylı’nın Rotasıyla Fatih’i Geziyoruz! Part 1"
+# Yeni video eklemek için bu iki satırı kopyalayıp listenin EN ÜSTÜNE yapıştır:
 #  - id: "VIDEO_KODU"
 #    baslik: "Videonun başlığı"
 
