@@ -395,7 +395,19 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
 .back:hover { color: var(--cyan); }
 .post-title { font-family: var(--f-display); font-size: clamp(2.1rem, 5.4vw, 3.4rem); line-height: 1.12; margin: 14px 0 18px; letter-spacing: .01em; }
 .post-head .tags { margin-bottom: 10px; }
-.post-cover { margin: 40px auto; max-width: 1000px; }
+.post-cover { margin: 40px auto; max-width: 1000px; position: relative; }
+.cover-badge { position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 8px; color: #07060f; background: var(--k); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.cover-badge:hover { color: #07060f; text-shadow: none; filter: brightness(1.1); }
+.post-meta { gap: 18px; margin: 0 0 22px; }
+.meta-i { display: inline-flex; align-items: center; gap: 7px; }
+.meta-i[hidden] { display: none; }
+.meta-i svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.byline { display: flex; flex-wrap: wrap; gap: 14px 30px; margin: 0 0 22px; }
+.byline-p { display: flex; align-items: center; gap: 12px; }
+.byline-p img, .byline-ring { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-strong); flex: none; }
+.byline-ring { background: radial-gradient(circle, rgba(139,92,255,.3), transparent 70%); box-shadow: 0 0 16px -4px rgba(0,240,255,.45); }
+.byline-name { margin: 0; font-family: var(--f-display); font-weight: 600; line-height: 1.2; color: var(--text); }
+.byline-role { margin: 2px 0 0; font-size: .85rem; color: var(--text-3); }
 .post-cover img { border-radius: calc(var(--radius) + 4px); border: 1px solid var(--line); width: 100%; }
 .divider { height: 1px; margin: 40px 0; background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent); opacity: .6; }
 

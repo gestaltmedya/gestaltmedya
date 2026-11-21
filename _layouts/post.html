@@ -10,15 +10,30 @@ body_class: post-page
 <article class="post">
   <header class="wrap narrow post-head"{% if kat %} style="--k: {{ kat.renk }}"{% endif %}>
     <a class="back mono" href="{{ '/blog/' | relative_url }}">← tüm yazılar</a>
-    <div class="meta mono">
-      {% if kat %}<a class="kat-link" href="{{ '/kategori/' | append: kat.id | append: '/' | relative_url }}">{{ kat.ad }}</a><span class="sep">//</span>{% endif %}
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d.%m.%Y' }}</time>
-      <span class="sep">//</span>
-      <span>{{ minutes }} dk okuma</span>
-      {% assign au = site.data.authors[page.author] %}{% if au and page.author != "gestalt" %}<span class="sep">//</span><span>{{ au.name }}</span>{% endif %}
-    </div>
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
+    {% assign has_cover = false %}{% if page.image and page.image != site.og_image %}{% assign has_cover = true %}{% endif %}
+    <div class="meta mono post-meta">
+      {% if kat and has_cover == false %}<a class="kat-link" href="{{ '/kategori/' | append: kat.id | append: '/' | relative_url }}">{{ kat.ad }}</a><span class="sep">//</span>{% endif %}
+      <span class="meta-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d.%m.%Y' }}</time></span>
+      <span class="meta-i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>{{ minutes }} dk okuma</span>
+      <span class="meta-i" id="post-views" data-gc="{{ site.goatcounter }}" data-path="{{ page.url }}" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span></span></span>
+    </div>
+    {% assign aid = page.author | default: "gestalt" %}
+    {% assign au = site.data.authors[aid] %}
+    {% assign ed = site.data.authors[page.editor] %}
+    <div class="byline">
+      <div class="byline-p">
+        {% if au.picture != "" and au.picture %}<img src="{{ au.picture | relative_url }}" alt="" width="48" height="48">{% else %}<span class="byline-ring" aria-hidden="true"></span>{% endif %}
+        <div><p class="byline-name">{{ au.name | default: aid }}</p><p class="byline-role">{% if aid == "gestalt" %}Yayın Ekibi{% else %}Yazar{% endif %}</p></div>
+      </div>
+      {% if page.editor %}
+      <div class="byline-p">
+        {% if ed.picture != "" and ed.picture %}<img src="{{ ed.picture | relative_url }}" alt="" width="48" height="48">{% else %}<span class="byline-ring" aria-hidden="true"></span>{% endif %}
+        <div><p class="byline-name">{{ ed.name | default: page.editor }}</p><p class="byline-role">Editör</p></div>
+      </div>
+      {% endif %}
+    </div>
     {% if page.tags.size > 0 %}
     <div class="tags">
       {% for t in page.tags %}<a class="tag" href="{{ '/etiketler/' | relative_url }}#{{ t | slugify }}">#{{ t }}</a>{% endfor %}
@@ -29,6 +44,7 @@ body_class: post-page
   {% if page.image and page.image != site.og_image %}
   <figure class="wrap post-cover">
     <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
+    {% if kat %}<a class="cover-badge mono" href="{{ '/kategori/' | append: kat.id | append: '/' | relative_url }}" style="--k: {{ kat.renk }}">{{ kat.ad }}</a>{% endif %}
   </figure>
   {% else %}
   <div class="wrap narrow"><div class="divider" aria-hidden="true"></div></div>
@@ -39,8 +55,6 @@ body_class: post-page
   </div>
 
   <footer class="wrap narrow post-foot">
-    {% include author-box.html %}
-
     <div class="share">
       <span class="mono dim">paylaş_</span>
       <button class="share-native" type="button" data-title="{{ page.title | escape }}" data-url="{{ page.url | absolute_url }}" hidden>Paylaş…</button>

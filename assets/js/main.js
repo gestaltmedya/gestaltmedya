@@ -22,6 +22,17 @@
     }, { rootMargin: "-70px 0px 0px 0px" }).observe(heroTitle);
   }
 
+  /* Yazı sayfası: okunma sayısı (GoatCounter; 0 ise gizli kalır) */
+  var pv = document.getElementById("post-views");
+  if (pv && pv.getAttribute("data-gc") && window.fetch) {
+    fetch("https://" + pv.getAttribute("data-gc") + ".goatcounter.com/counter/" + encodeURIComponent(pv.getAttribute("data-path")) + ".json")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        var n = j ? parseInt(String(j.count).replace(/\D/g, ""), 10) || 0 : 0;
+        if (n > 0) { pv.querySelector("span").textContent = n; pv.hidden = false; }
+      }).catch(function () {});
+  }
+
   /* Öne çıkan: penceredeki yazılar içinden en çok okunanı seç (GoatCounter) */
   var candEl = document.getElementById("featured-candidates");
   var feat = document.getElementById("featured");
