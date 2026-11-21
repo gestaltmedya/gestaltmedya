@@ -74,6 +74,7 @@ Her şey tarayıcıdan, GitHub üzerinden yapılır:
 ---
 title: "Yazının başlığı"
 description: "Kartlarda ve Google'da görünecek 1-2 cümlelik özet."
+kategori: teknoloji   # tek bir tane: medya, teknoloji, kultur ya da zihin
 tags: [teknoloji, kültür]
 image: /assets/img/kapak-gorseli.jpg   # isteğe bağlı, yoksa bu satırı sil
 ---
@@ -85,6 +86,10 @@ Yazının ilk paragrafı buraya.
 Devamı...
 ```
 
+**Kategori mi, etiket mi?** Kategori yazının ana rafıdır; her yazının tek kategorisi olur ve kartın rengi buradan gelir (Medya camgöbeği, Teknoloji mor, Kültür amber, Zihin limon). Etiketler serbesttir, istediğin kadar ekleyebilirsin. Kategorileri `_config.yml` → `kategoriler:` bölümünden değiştirebilirsin.
+
+**Kapak görseli:** Kartlarda görsel kategori rengine boyanır, üstüne gelince gerçek rengi görünür. Yazının kendi sayfasında görsel orijinal renginde durur. Görsel koymazsan kart kategori renginde desenli bir kapakla çıkar.
+
 5. **Commit changes** → 1-2 dakika içinde yazı sitede yayında.
 
 **Görsel eklemek için:** `assets/img` klasörüne gir → **Add file → Upload files** ile görseli yükle, sonra yazıda
@@ -94,8 +99,7 @@ Devamı...
 
 **Taslak:** Henüz yayınlamak istemediğin yazıları `_drafts` adlı bir klasöre koyabilirsin; orada yayınlanmazlar.
 
-> Biçim örnekleri için sitedeki "Yazı biçimleri" yazısına bak (`_posts/2026-11-05-yazi-bicimleri-rehberi.md`).
-> Örnek yazıları istediğin zaman silebilirsin.
+> Biçim örnekleri için `_posts/2026-11-05-yazi-bicimleri-rehberi.md` dosyasına bak. Bu yazı `published: false` ile yayından gizli; yayınlamak istersen o satırı sil.
 
 ---
 

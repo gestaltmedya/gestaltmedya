@@ -1,15 +1,17 @@
 {% assign p = include.post %}
 {% assign words = p.content | number_of_words %}
 {% assign minutes = words | divided_by: 180 | plus: 1 %}
-{% assign hue = p.title | size | times: 37 | modulo: 360 %}
-<article class="card" data-tags="{% for t in p.tags %}{{ t | slugify }} {% endfor %}" data-search="{{ p.title | downcase | escape }} {{ p.excerpt | strip_html | downcase | escape | truncate: 300 }}">
+{% assign kat = site.kategoriler | where: "id", p.kategori | first %}
+<article class="card"{% if kat %} style="--k: {{ kat.renk }}"{% endif %} data-tags="{% for t in p.tags %}{{ t | slugify }} {% endfor %}" data-search="{{ p.title | downcase | escape }} {{ p.excerpt | strip_html | downcase | escape | truncate: 300 }}">
   <a class="card-link" href="{{ p.url | relative_url }}" aria-label="{{ p.title | escape }}"></a>
-  <div class="card-cover" style="--h: {{ hue }}">
-    {% if p.image %}
+  {% assign has_img = false %}{% if p.image and p.image != site.og_image %}{% assign has_img = true %}{% endif %}
+  <div class="card-cover{% if has_img %} has-img{% endif %}">
+    {% if has_img %}
       <img src="{{ p.image | relative_url }}" alt="" loading="lazy">
     {% else %}
       <span class="card-glyph" aria-hidden="true">{{ p.title | slice: 0 | upcase }}</span>
     {% endif %}
+    {% if kat %}<span class="card-kat mono">// {{ kat.ad }}</span>{% endif %}
   </div>
   <div class="card-body">
     <div class="meta mono">

@@ -1,7 +1,6 @@
 ---
 layout: default
 body_class: home
-title: Ana Sayfa
 ---
 <section class="hero">
   <div class="wrap hero-inner">
@@ -34,15 +33,16 @@ title: Ana Sayfa
 {% assign pinned = site.posts | where: "featured", true | first %}
 {% if pinned %}{% assign feat = pinned %}{% else %}{% assign feat = site.posts.first %}{% endif %}
 {% assign feat_words = feat.content | number_of_words %}
+{% assign feat_kat = site.kategoriler | where: "id", feat.kategori | first %}
 <section class="wrap section section--home">
-  <a class="featured" href="{{ feat.url | relative_url }}" id="featured"{% if pinned %} data-pinned="1"{% endif %}>
+  <a class="featured" href="{{ feat.url | relative_url }}" id="featured"{% if feat_kat %} style="--k: {{ feat_kat.renk }}"{% endif %}{% if pinned %} data-pinned="1"{% endif %}>
     <div class="featured-glow" aria-hidden="true"></div>
-    <p class="kicker mono">öne çıkan // <span data-f="date">{{ feat.date | date: '%d.%m.%Y' }}</span> // <span data-f="min">{{ feat_words | divided_by: 180 | plus: 1 }}</span> dk</p>
+    <p class="kicker mono">öne çıkan // <span data-f="kat">{{ feat_kat.ad | default: "yazı" | downcase }}</span> // <span data-f="date">{{ feat.date | date: '%d.%m.%Y' }}</span> // <span data-f="min">{{ feat_words | divided_by: 180 | plus: 1 }}</span> dk</p>
     <h2 class="featured-title" data-f="title">{{ feat.title }}</h2>
     <p class="featured-excerpt" data-f="excerpt">{{ feat.description | default: feat.excerpt | strip_html | truncatewords: 40 }}</p>
     <span class="link-arrow mono">okumaya başla →</span>
   </a>
-  <script type="application/json" id="featured-candidates" data-gc="{{ site.goatcounter }}">[{% assign sep = "" %}{% for post in site.posts %}{% assign ps = post.date | date: '%s' | plus: 0 %}{% if ps < cutoff %}{% break %}{% endif %}{% assign w = post.content | number_of_words %}{{ sep }}{"url":{{ post.url | relative_url | jsonify }},"title":{{ post.title | jsonify }},"date":"{{ post.date | date: '%d.%m.%Y' }}","min":{{ w | divided_by: 180 | plus: 1 }},"excerpt":{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncatewords: 40 | jsonify }}}{% assign sep = "," %}{% endfor %}]</script>
+  <script type="application/json" id="featured-candidates" data-gc="{{ site.goatcounter }}">[{% assign sep = "" %}{% for post in site.posts %}{% assign ps = post.date | date: '%s' | plus: 0 %}{% if ps < cutoff %}{% break %}{% endif %}{% assign w = post.content | number_of_words %}{% assign pk = site.kategoriler | where: "id", post.kategori | first %}{{ sep }}{"kat":{{ pk.ad | default: "yazı" | downcase | jsonify }},"renk":{{ pk.renk | default: "" | jsonify }},"url":{{ post.url | relative_url | jsonify }},"title":{{ post.title | jsonify }},"date":"{{ post.date | date: '%d.%m.%Y' }}","min":{{ w | divided_by: 180 | plus: 1 }},"excerpt":{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncatewords: 40 | jsonify }}}{% assign sep = "," %}{% endfor %}]</script>
 
   {% comment %} Son yazılar: öne çıkan dışındaki en yeni yazılar (bir fazlası basılır, fazlalık gizlenir) {% endcomment %}
   {% assign limit = site.home_posts | plus: 1 %}
@@ -66,9 +66,10 @@ title: Ana Sayfa
   <div class="manifesto">
     <p><strong>Gestalt</strong>, parçaları tek tek değil, bir bütün olarak algıladığımızı söyler. Biz de haberleri, trendleri ve fikirleri ayrı ayrı değil; aralarındaki bağlarla birlikte okumaya çalışıyoruz.</p>
     <div class="pillars">
-      <div class="pillar"><span class="pillar-n mono">◇</span><h3>Medya</h3><p>Ekranların ve anlatıların nasıl şekillendiği.</p></div>
-      <div class="pillar"><span class="pillar-n mono">◇</span><h3>Teknoloji</h3><p>Geleceğin bugüne sızan sinyalleri.</p></div>
-      <div class="pillar"><span class="pillar-n mono">◇</span><h3>Kültür</h3><p>Sokaktan dijitale, değişen gündelik hayat.</p></div>
+      {% for k in site.kategoriler %}{% assign kn = site.posts | where: "kategori", k.id %}
+      <a class="pillar" style="--k: {{ k.renk }}" href="{{ '/kategori/' | append: k.id | append: '/' | relative_url }}">
+        <span class="pillar-n mono">◇ {{ kn.size }} yazı</span><h3>{{ k.ad }}</h3><p>{{ k.aciklama }}</p><span class="pillar-go mono">gir →</span>
+      </a>{% endfor %}
     </div>
   </div>
 </section>

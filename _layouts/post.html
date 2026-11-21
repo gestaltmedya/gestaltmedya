@@ -4,12 +4,14 @@ body_class: post-page
 ---
 {% assign words = content | number_of_words %}
 {% assign minutes = words | divided_by: 180 | plus: 1 %}
+{% assign kat = site.kategoriler | where: "id", page.kategori | first %}
 <div class="read-progress" aria-hidden="true"><span></span></div>
 
 <article class="post">
-  <header class="wrap narrow post-head">
+  <header class="wrap narrow post-head"{% if kat %} style="--k: {{ kat.renk }}"{% endif %}>
     <a class="back mono" href="{{ '/blog/' | relative_url }}">← tüm yazılar</a>
     <div class="meta mono">
+      {% if kat %}<a class="kat-link" href="{{ '/kategori/' | append: kat.id | append: '/' | relative_url }}">{{ kat.ad }}</a><span class="sep">//</span>{% endif %}
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d.%m.%Y' }}</time>
       <span class="sep">//</span>
       <span>{{ minutes }} dk okuma</span>
@@ -24,7 +26,7 @@ body_class: post-page
     {% endif %}
   </header>
 
-  {% if page.image %}
+  {% if page.image and page.image != site.og_image %}
   <figure class="wrap post-cover">
     <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
   </figure>

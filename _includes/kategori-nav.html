@@ -1,0 +1,3 @@
+<nav class="kat-nav" aria-label="Kategoriler">
+  {% for k in site.kategoriler %}<a class="kat-chip{% if include.aktif == k.id %} is-active{% endif %}" style="--k: {{ k.renk }}" href="{{ '/kategori/' | append: k.id | append: '/' | relative_url }}">{{ k.ad }}</a>{% endfor %}
+</nav>

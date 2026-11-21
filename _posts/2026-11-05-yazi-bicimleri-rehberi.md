@@ -1,7 +1,9 @@
 ---
 title: "Yazı biçimleri: bir blog yazısında neler kullanabilirsin?"
 description: "Başlıklar, listeler, alıntılar, görseller ve kod blokları — hepsi bu temada nasıl görünüyor?"
+kategori: medya
 tags: [rehber]
+published: false   # örnek yazı: yayında görünmez. Yayınlamak için bu satırı sil.
 ---
 
 Bu yazı, Gestalt Medya temasında kullanabileceğin biçimleri göstermek için hazırlandı. İstersen sonra silebilirsin.

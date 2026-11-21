@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{% assign kat = site.kategoriler | where: "id", page.kategori | first %}
+{% assign kposts = site.posts | where: "kategori", page.kategori %}
+<section class="wrap page-head kat-head" style="--k: {{ kat.renk }}">
+  <p class="kicker mono">kategori // {{ kposts.size }} kayıt</p>
+  <h1 class="page-title">{{ kat.ad }}</h1>
+  <p class="lead">{{ kat.aciklama }}</p>
+  {% include kategori-nav.html aktif=page.kategori %}
+</section>
+
+<section class="wrap section section--tight">
+  {% if kposts.size > 0 %}
+  <div class="cards">
+    {% for post in kposts %}{% include post-card.html post=post %}{% endfor %}
+  </div>
+  {% else %}
+  <p class="empty mono">// bu frekansta henüz yayın yok. yakında.</p>
+  {% endif %}
+</section>

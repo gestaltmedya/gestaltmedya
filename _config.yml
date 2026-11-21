@@ -21,7 +21,7 @@ social:
   x: ""              # ör: gestaltmedya
   youtube: "@gestaltmedya"
   linkedin: ""       # ör: company/gestaltmedya
-  email: ""          # ör: iletisim@gestaltmedya.com
+  email: "gestaltmedya@gmail.com"
 
 # Ana sayfada gösterilecek son yazı sayısı (öne çıkan hariç)
 home_posts: 6
@@ -37,6 +37,31 @@ featured_window_days: 14
 # goatcounter.com'da hesap açınca seçtiğin kodu buraya yaz (ör: gestaltmedya).
 # Boşken öne çıkan = penceredeki en yeni yazı.
 goatcounter: ""
+
+# KATEGORİLER: her yazının başına tek bir "kategori:" yaz (ör: kategori: teknoloji).
+# Renk kartın kapağını, öne çıkan alanın ışığını ve kategori etiketini boyar.
+# Sıra, ana sayfadaki sütunların sırasıdır.
+kategoriler:
+  - id: medya
+    ad: Medya
+    renk: "#00f0ff"
+    aciklama: "Ekranların ve anlatıların nasıl şekillendiği."
+  - id: teknoloji
+    ad: Teknoloji
+    renk: "#8b5cff"
+    aciklama: "Geleceğin bugüne sızan sinyalleri."
+  - id: kultur
+    ad: Kültür
+    renk: "#ffb547"
+    aciklama: "Sokaktan dijitale, değişen gündelik hayat."
+  - id: zihin
+    ad: Zihin
+    renk: "#d4ff3a"
+    aciklama: "Algı, dikkat ve düşünmenin yeni koşulları."
+
+# Paylaşım görseli: link WhatsApp/X/LinkedIn'de paylaşılınca çıkan kart.
+# Yazının kendi "image:" görseli varsa o kullanılır, yoksa bu.
+og_image: /assets/img/og-gestalt.png
 
 # Yazı adresleri: gestaltmedya.com/blog/yazi-adi/
 permalink: /blog/:title/
@@ -58,9 +83,11 @@ defaults:
   - scope: { path: "", type: posts }
     values:
       layout: post
+      image: /assets/img/og-gestalt.png
   - scope: { path: "" }
     values:
       layout: page
+      image: /assets/img/og-gestalt.png
 
 exclude:
   - README.md

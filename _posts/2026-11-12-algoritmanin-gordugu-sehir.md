@@ -1,6 +1,7 @@
 ---
 title: "Algoritmanın gördüğü şehir"
 description: "Telefonumuzun bize gösterdiği şehir ile sokakta yürüdüğümüz şehir aynı yer mi?"
+kategori: teknoloji
 tags: [teknoloji, kültür, şehir]
 ---
 

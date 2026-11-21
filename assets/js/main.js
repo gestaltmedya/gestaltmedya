@@ -41,7 +41,8 @@
         var c = cands[best];
         if (c.url === feat.getAttribute("href")) return;
         feat.setAttribute("href", c.url);
-        ["title", "date", "min", "excerpt"].forEach(function (k) {
+        if (c.renk) feat.style.setProperty("--k", c.renk); else feat.style.removeProperty("--k");
+        ["kat", "title", "date", "min", "excerpt"].forEach(function (k) {
           var el = feat.querySelector('[data-f="' + k + '"]');
           if (el) el.textContent = c[k];
         });
@@ -87,6 +88,8 @@
       });
     }, { rootMargin: "0px 0px -40px 0px" });
     revealEls.forEach(function (el, i) {
+      /* açılışta zaten ekranda olanlar beklemeden görünür (ilk ekran soluk kalmasın) */
+      if (el.getBoundingClientRect().top < window.innerHeight - 40) return;
       el.classList.add("reveal");
       el.style.transitionDelay = (i % 3) * 80 + "ms";
       io.observe(el);

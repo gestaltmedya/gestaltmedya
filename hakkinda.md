@@ -19,4 +19,7 @@ Adımızı Gestalt psikolojisinden alıyoruz: insan zihni dünyayı tek tek par�
 
 Bir fikrin, önerin ya da iş birliği teklifin mi var? Bize yaz — sinyalin bize ulaşır.
 
-> Bu sayfayı `hakkinda.md` dosyasından istediğin gibi düzenleyebilirsin.
+{% if site.social.email != "" %}- E-posta: [{{ site.social.email }}](mailto:{{ site.social.email }})
+{% endif %}{% if site.social.instagram != "" %}- Instagram: [@{{ site.social.instagram }}](https://instagram.com/{{ site.social.instagram }}) üzerinden mesaj at
+{% endif %}{% if site.social.youtube != "" %}- YouTube: [{{ site.social.youtube }}](https://youtube.com/{{ site.social.youtube }})
+{% endif %}

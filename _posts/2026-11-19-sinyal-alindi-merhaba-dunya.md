@@ -1,6 +1,7 @@
 ---
 title: "Sinyal alındı: Gestalt Medya yayında"
 description: "Yeni bir yayın, yeni bir frekans. Gestalt Medya neden var, burada neler okuyacaksın?"
+kategori: medya
 tags: [duyuru, gestalt]
 ---
 
