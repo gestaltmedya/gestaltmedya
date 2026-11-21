@@ -40,7 +40,7 @@ body_class: post-page
   </header>
 
   {% if page.image and page.image != site.og_image %}
-  <figure class="wrap post-cover">
+  <figure class="wrap narrow post-cover">
     <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}">
     {% if kat %}<a class="cover-badge mono" href="{{ '/kategori/' | append: kat.id | append: '/' | relative_url }}" style="--k: {{ kat.renk }}">{{ kat.ad }}</a>{% endif %}
   </figure>
