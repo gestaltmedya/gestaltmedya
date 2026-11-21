@@ -15,7 +15,7 @@ body_class: post-page
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d.%m.%Y' }}</time>
       <span class="sep">//</span>
       <span>{{ minutes }} dk okuma</span>
-      {% if page.author %}<span class="sep">//</span><span>{{ page.author }}</span>{% endif %}
+      {% assign au = site.data.authors[page.author] %}{% if au and page.author != "gestalt" %}<span class="sep">//</span><span>{{ au.name }}</span>{% endif %}
     </div>
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
@@ -39,28 +39,18 @@ body_class: post-page
   </div>
 
   <footer class="wrap narrow post-foot">
+    {% include author-box.html %}
+
     <div class="share">
       <span class="mono dim">paylaş_</span>
+      <button class="share-native" type="button" data-title="{{ page.title | escape }}" data-url="{{ page.url | absolute_url }}" hidden>Paylaş…</button>
+      <a href="https://wa.me/?text={% capture wa %}{{ page.title }} {{ page.url | absolute_url }}{% endcapture %}{{ wa | url_encode }}" target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://x.com/intent/post?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}" target="_blank" rel="noopener">X</a>
       <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">LinkedIn</a>
-      {% capture wa %}{{ page.title }} {{ page.url | absolute_url }}{% endcapture %}
-      <a href="https://wa.me/?text={{ wa | url_encode }}" target="_blank" rel="noopener">WhatsApp</a>
       <button class="copy-link" type="button" data-url="{{ page.url | absolute_url }}">Bağlantıyı kopyala</button>
     </div>
 
-    <nav class="post-nav">
-      {% if page.previous %}
-      <a class="post-nav-item" href="{{ page.previous.url | relative_url }}">
-        <span class="mono dim">← önceki</span>
-        <span>{{ page.previous.title }}</span>
-      </a>
-      {% else %}<span></span>{% endif %}
-      {% if page.next %}
-      <a class="post-nav-item post-nav-item--next" href="{{ page.next.url | relative_url }}">
-        <span class="mono dim">sonraki →</span>
-        <span>{{ page.next.title }}</span>
-      </a>
-      {% endif %}
-    </nav>
+    {% include related.html %}
+    {% include newsletter.html compact=true %}
   </footer>
 </article>

@@ -122,6 +122,27 @@
     });
   }
 
+  /* Telefonun kendi paylaşım menüsü (Instagram, Telegram vb. dahil). Desteklenmiyorsa buton gizli kalır. */
+  var shareBtn = document.querySelector(".share-native");
+  if (shareBtn && navigator.share) {
+    shareBtn.hidden = false;
+    shareBtn.addEventListener("click", function () {
+      navigator.share({ title: shareBtn.getAttribute("data-title"), url: shareBtn.getAttribute("data-url") }).catch(function () {});
+    });
+  }
+
+  /* YouTube: önce sadece kapak resmi yüklenir; tıklanınca çerezsiz oynatıcı açılır (hızlı + gizlilik dostu) */
+  Array.prototype.forEach.call(document.querySelectorAll(".yt-lite"), function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(b.getAttribute("data-id")) + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label") || "YouTube";
+      f.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+
   /* Blog: arama + etiket filtresi */
   var list = document.getElementById("post-list");
   if (list) {

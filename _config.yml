@@ -59,6 +59,22 @@ kategoriler:
     renk: "#d4ff3a"
     aciklama: "Algı, dikkat ve düşünmenin yeni koşulları."
 
+# BÜLTEN (e-posta aboneliği)
+# Buttondown'da (buttondown.com, ücretsiz başlangıç) hesap açınca kullanıcı adını aşağıdaki adrese yaz.
+# Boşken bülten kutusu sitede görünmez.
+#   Buttondown: https://buttondown.com/api/emails/embed-subscribe/KULLANICIADI
+#   Substack:   https://KULLANICIADI.substack.com/api/v1/free?nojs=true
+bulten:
+  form_url: ""
+  saglayici: "Buttondown"     # gizlilik metninde adı geçer
+  saglayici_ulke: "ABD"
+
+# YOUTUBE ŞERİDİ (ana sayfa). Videonun adresindeki kodu yaz: youtube.com/watch?v=BURASI
+# Boşken şerit görünmez. En yeni video en üste.
+youtube_videolar:
+#  - id: "VIDEO_KODU"
+#    baslik: "Videonun başlığı"
+
 # Paylaşım görseli: link WhatsApp/X/LinkedIn'de paylaşılınca çıkan kart.
 # Yazının kendi "image:" görseli varsa o kullanılır, yoksa bu.
 og_image: /assets/img/og-gestalt.png
@@ -83,6 +99,7 @@ defaults:
   - scope: { path: "", type: posts }
     values:
       layout: post
+      author: gestalt
       image: /assets/img/og-gestalt.png
   - scope: { path: "" }
     values:

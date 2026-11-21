@@ -1,0 +1,33 @@
+{% comment %} İlgili yazılar: önce aynı kategori, sonra ortak etiket, yetmezse en yeniler. En fazla 3. {% endcomment %}
+{% assign rel = "" | split: "" %}
+{% assign seen = page.url | append: "|" %}
+{% for post in site.posts %}
+  {% if rel.size >= 3 %}{% break %}{% endif %}
+  {% if post.kategori and post.kategori == page.kategori %}{% unless seen contains post.url %}{% assign rel = rel | push: post %}{% assign seen = seen | append: post.url | append: "|" %}{% endunless %}{% endif %}
+{% endfor %}
+{% for post in site.posts %}
+  {% if rel.size >= 3 %}{% break %}{% endif %}
+  {% unless seen contains post.url %}
+    {% assign ortak = false %}
+    {% for t in post.tags %}{% if page.tags contains t %}{% assign ortak = true %}{% break %}{% endif %}{% endfor %}
+    {% if ortak %}{% assign rel = rel | push: post %}{% assign seen = seen | append: post.url | append: "|" %}{% endif %}
+  {% endunless %}
+{% endfor %}
+{% for post in site.posts %}
+  {% if rel.size >= 3 %}{% break %}{% endif %}
+  {% unless seen contains post.url %}{% assign rel = rel | push: post %}{% assign seen = seen | append: post.url | append: "|" %}{% endunless %}
+{% endfor %}
+{% if rel.size > 0 %}
+<section class="related" aria-labelledby="rel-title">
+  <h2 class="related-title mono" id="rel-title">// benzer frekanslar</h2>
+  <div class="related-list">
+    {% for post in rel %}{% assign rk = site.kategoriler | where: "id", post.kategori | first %}
+    <a class="rel-item" href="{{ post.url | relative_url }}"{% if rk %} style="--k: {{ rk.renk }}"{% endif %}>
+      <span class="rel-kat mono">{{ rk.ad | default: "yazı" }}</span>
+      <span class="rel-name">{{ post.title }}</span>
+      <time class="mono dim" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d.%m.%Y' }}</time>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

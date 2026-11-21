@@ -1,0 +1,19 @@
+{% if site.youtube_videolar and site.youtube_videolar.size > 0 %}
+<section class="wrap section yt-strip" aria-labelledby="yt-title">
+  <div class="section-head">
+    <h2 class="section-title" id="yt-title"><span class="mono yt-kicker">// yayında</span> Videolar</h2>
+    <a class="link-arrow mono" href="https://www.youtube.com/{{ site.social.youtube }}" target="_blank" rel="noopener">kanala git →</a>
+  </div>
+  <div class="yt-list">
+    {% for v in site.youtube_videolar limit: 3 %}
+    <figure class="yt-item">
+      <button class="yt-lite" type="button" data-id="{{ v.id }}" aria-label="Videoyu oynat: {{ v.baslik | escape }}">
+        <img src="https://i.ytimg.com/vi/{{ v.id }}/hqdefault.jpg" alt="" loading="lazy">
+        <span class="yt-play" aria-hidden="true"></span>
+      </button>
+      <figcaption>{{ v.baslik }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

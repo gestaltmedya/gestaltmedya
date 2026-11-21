@@ -62,6 +62,8 @@ body_class: home
 <section class="wrap section"><p class="empty mono">// henüz yazı yok. _posts klasörüne ilk yazını ekle.</p></section>
 {% endif %}
 
+{% include youtube-strip.html %}
+
 <section class="wrap section">
   <div class="manifesto">
     <p><strong>Gestalt</strong>, parçaları tek tek değil, bir bütün olarak algıladığımızı söyler. Biz de haberleri, trendleri ve fikirleri ayrı ayrı değil; aralarındaki bağlarla birlikte okumaya çalışıyoruz.</p>
@@ -73,3 +75,7 @@ body_class: home
     </div>
   </div>
 </section>
+
+{% if site.bulten.form_url and site.bulten.form_url != "" %}
+<div class="wrap section section--tight">{% include newsletter.html %}</div>
+{% endif %}

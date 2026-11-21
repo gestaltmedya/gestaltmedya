@@ -1,0 +1,17 @@
+{% assign aid = page.author | default: "gestalt" %}
+{% assign a = site.data.authors[aid] %}
+{% if a %}
+<aside class="author-box" aria-label="Yazar">
+  {% if a.picture != "" and a.picture %}
+  <img class="author-pic" src="{{ a.picture | relative_url }}" alt="{{ a.name }}" width="72" height="72" loading="lazy">
+  {% else %}
+  <span class="author-pic author-pic--ring" aria-hidden="true"><span></span></span>
+  {% endif %}
+  <div class="author-text">
+    <p class="author-role mono">// {{ a.rol | default: "yazar" }}</p>
+    <p class="author-name">{{ a.name }}</p>
+    {% if a.bio %}<p class="author-bio">{{ a.bio }}</p>{% endif %}
+    {% if a.instagram %}<a class="author-link mono" href="https://www.instagram.com/{{ a.instagram }}/" target="_blank" rel="noopener">@{{ a.instagram }} →</a>{% endif %}
+  </div>
+</aside>
+{% endif %}

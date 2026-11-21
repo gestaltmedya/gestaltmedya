@@ -1,0 +1,19 @@
+{% if site.bulten.form_url and site.bulten.form_url != "" %}
+<section class="newsletter{% if include.compact %} newsletter--compact{% endif %}" aria-labelledby="nl-title{{ include.compact }}">
+  <div class="newsletter-glow" aria-hidden="true"></div>
+  <p class="kicker mono"><span class="pulse-dot"></span> frekansta kal</p>
+  <h2 class="newsletter-title" id="nl-title{{ include.compact }}">Yeni yazılar e-postana düşsün.</h2>
+  <p class="newsletter-sub">Ayda birkaç kez, gürültüsüz. İstediğin an tek tıkla ayrılırsın.</p>
+  <form class="newsletter-form" action="{{ site.bulten.form_url }}" method="post" target="_blank">
+    <div class="newsletter-row">
+      <label class="sr-only" for="nl-email{{ include.compact }}">E-posta adresin</label>
+      <input id="nl-email{{ include.compact }}" type="email" name="email" placeholder="e-posta adresin" required autocomplete="email">
+      <button class="btn btn--primary" type="submit">Abone ol</button>
+    </div>
+    <label class="newsletter-consent">
+      <input type="checkbox" required>
+      <span><a href="{{ '/gizlilik/' | relative_url }}">Aydınlatma metnini</a> okudum. E-posta adresimin bülten gönderimi için {{ site.bulten.saglayici }} ({{ site.bulten.saglayici_ulke }}) sunucularına aktarılmasına açık rıza veriyorum.</span>
+    </label>
+  </form>
+</section>
+{% endif %}

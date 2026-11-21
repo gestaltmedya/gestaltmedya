@@ -90,6 +90,8 @@ Devamı...
 
 **Kapak görseli:** Kartlarda görsel kategori rengine boyanır, üstüne gelince gerçek rengi görünür. Yazının kendi sayfasında görsel orijinal renginde durur. Görsel koymazsan kart kategori renginde desenli bir kapakla çıkar.
 
+**Yazar:** Yazmazsan yazı "Gestalt Medya" adına çıkar. Başka bir yazar için başa `author: kimlik` yaz (kimlikler `_data/authors.yml` içinde).
+
 5. **Commit changes** → 1-2 dakika içinde yazı sitede yayında.
 
 **Görsel eklemek için:** `assets/img` klasörüne gir → **Add file → Upload files** ile görseli yükle, sonra yazıda
@@ -110,6 +112,10 @@ Devamı...
 | Site adı, slogan, açıklama       | `_config.yml`                             |
 | Sosyal medya hesapları           | `_config.yml` → `social:` bölümü          |
 | Hakkında sayfası                 | `hakkinda.md`                             |
+| Yazarlar (isim, biyografi, foto) | `_data/authors.yml`                       |
+| Bülten kutusunu açmak            | `_config.yml` → `bulten:` → `form_url`    |
+| Ana sayfadaki YouTube videoları  | `_config.yml` → `youtube_videolar:`       |
+| Gizlilik / KVKK metni            | `gizlilik.md`                             |
 | Ana sayfa metinleri              | `index.html`                              |
 | Renkler                          | `assets/css/style.css` → en üstteki `:root` |
 | Menü bağlantıları                | `_includes/header.html`                   |

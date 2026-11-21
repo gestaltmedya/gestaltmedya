@@ -1,0 +1,19 @@
+# YAZARLAR
+# Yazının başına "author: kimlik" yazınca o yazarın kutusu çıkar (ör: author: gestalt).
+# Yazmazsan varsayılan yazar "gestalt" kullanılır (_config.yml → defaults).
+# picture: yazar fotoğrafı (kare, en az 200×200). Boşsa neon halka görünür.
+
+gestalt:
+  name: "Gestalt Medya"
+  rol: "yayın ekibi"
+  bio: "Medya, teknoloji, kültür ve zihin arasındaki bağları okuyan küçük bir yayın ekibi. Gürültünün içinden sinyali ayıklamaya çalışıyoruz."
+  picture: ""
+  instagram: "gestaltmedya"
+
+# Yeni yazar eklemek için bu şablonu kopyala, başındaki # işaretlerini kaldır:
+# onur:
+#   name: "Ad Soyad"
+#   rol: "yazar"
+#   bio: "Bir iki cümlelik kısa tanıtım."
+#   picture: "/assets/img/yazar-onur.jpg"
+#   instagram: "kullaniciadi"
