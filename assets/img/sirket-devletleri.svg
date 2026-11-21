@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="62%" r="75%">
+      <stop offset="0" stop-color="#1a1330"/>
+      <stop offset="1" stop-color="#07060f"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffb547"/>
+      <stop offset="1" stop-color="#00f0ff"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <!-- ufuk -->
+  <line x1="0" y1="640" x2="1600" y2="640" stroke="#ffffff" stroke-opacity=".18" stroke-width="2"/>
+  <!-- geçmiş: beş pencereli bina -->
+  <g filter="url(#glow)" fill="none" stroke="#ffb547" stroke-width="4">
+    <path d="M200 640 V420 H700 V640"/>
+    <path d="M180 420 L450 330 L720 420"/>
+  </g>
+  <g fill="#ffb547">
+    <rect x="240" y="480" width="56" height="90" opacity=".95"/>
+    <rect x="330" y="480" width="56" height="90" opacity=".95"/>
+    <rect x="422" y="480" width="56" height="90" opacity=".95"/>
+    <rect x="514" y="480" width="56" height="90" opacity=".95"/>
+    <rect x="604" y="480" width="56" height="90" opacity=".95"/>
+  </g>
+  <!-- bağ -->
+  <line x1="760" y1="530" x2="1000" y2="530" stroke="url(#line)" stroke-width="3" stroke-dasharray="3 14" stroke-linecap="round" stroke-opacity=".9"/>
+  <!-- bugün: yörünge -->
+  <g filter="url(#glow)" fill="none" stroke="#00f0ff" stroke-width="3">
+    <circle cx="1220" cy="400" r="150" stroke-opacity=".95"/>
+    <ellipse cx="1220" cy="400" rx="260" ry="70" transform="rotate(-24 1220 400)" stroke-opacity=".55"/>
+  </g>
+  <circle cx="1220" cy="400" r="54" fill="#07060f" stroke="#00f0ff" stroke-width="3"/>
+  <circle cx="1432" cy="322" r="11" fill="#ff2bd6" filter="url(#glow)"/>
+</svg>
