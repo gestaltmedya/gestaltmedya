@@ -508,7 +508,7 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
 
 /* youtube şeridi */
 .yt-kicker { display: block; color: var(--cyan); font-size: .8rem; font-weight: 400; margin-bottom: 4px; }
-.yt-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.yt-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 24px; }
 .yt-item { margin: 0; }
 .yt-item figcaption { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
 .yt-name { font-family: var(--f-display); font-weight: 600; line-height: 1.3; }

@@ -72,8 +72,8 @@ bulten:
 # YOUTUBE ŞERİDİ (ana sayfa). Videonun adresindeki kodu yaz: youtube.com/watch?v=BURASI
 # Boşken şerit görünmez. En yeni video en üste.
 youtube_videolar:
-  - id: "UP1tOQeiF0w"
-    baslik: "İlber Ortaylı’nın Rotasıyla Fatih’i Geziyoruz! Part 1"
+  - id: "kBS9KFlmTmc"
+    baslik: "Yeni James Bond’un Robert Pattinson Olması Hakkında Konuşuyoruz."
 # Yeni video eklemek için bu iki satırı kopyalayıp listenin EN ÜSTÜNE yapıştır:
 #  - id: "VIDEO_KODU"
 #    baslik: "Videonun başlığı"
