@@ -24,13 +24,11 @@ body_class: post-page
     {% assign ed = site.data.authors[page.editor] %}
     <div class="byline">
       <div class="byline-p">
-        {% if au.picture != "" and au.picture %}<img src="{{ au.picture | relative_url }}" alt="" width="48" height="48">{% else %}<span class="byline-ring" aria-hidden="true"></span>{% endif %}
-        <div><p class="byline-name">{{ au.name | default: aid }}</p><p class="byline-role">{% if aid == "gestalt" %}Yayın Ekibi{% else %}Yazar{% endif %}</p></div>
+        <div class="byline-p-text"><p class="byline-name">{% if aid == "gestalt" %}Gestalt Medya Yayın Ekibi{% else %}{{ au.name | default: aid }}{% endif %}</p><p class="byline-role">Yazar</p></div>
       </div>
       {% if page.editor %}
       <div class="byline-p">
-        {% if ed.picture != "" and ed.picture %}<img src="{{ ed.picture | relative_url }}" alt="" width="48" height="48">{% else %}<span class="byline-ring" aria-hidden="true"></span>{% endif %}
-        <div><p class="byline-name">{{ ed.name | default: page.editor }}</p><p class="byline-role">Editör</p></div>
+        <div class="byline-p-text"><p class="byline-name">{{ ed.name | default: page.editor }}</p><p class="byline-role">Editör</p></div>
       </div>
       {% endif %}
     </div>

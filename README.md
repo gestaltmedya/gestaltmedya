@@ -90,7 +90,7 @@ Devamı...
 
 **Kapak görseli:** Kartlarda görsel kategori rengine boyanır, üstüne gelince gerçek rengi görünür. Yazının kendi sayfasında görsel orijinal renginde durur. Görsel koymazsan kart kategori renginde desenli bir kapakla çıkar.
 
-**Yazar:** Yazmazsan yazı "Gestalt Medya" adına çıkar. Başka bir yazar için başa `author: kimlik` yaz (kimlikler `_data/authors.yml` içinde). Kimlik yerine doğrudan isim de yazabilirsin: `author: "Onur Avşar"`. Yazmazsan başlığın altında "Gestalt Medya · Yayın Ekibi" görünür. İsteğe bağlı editör: `editor: "Ad Soyad"`.
+**Yazar:** Yazmazsan yazı "Gestalt Medya" adına çıkar. Başka bir yazar için başa `author: kimlik` yaz (kimlikler `_data/authors.yml` içinde). Kimlik yerine doğrudan isim de yazabilirsin: `author: "Onur Avşar"`. Yazmazsan başlığın altında "Gestalt Medya Yayın Ekibi" görünür. İsteğe bağlı editör: `editor: "Ad Soyad"`.
 
 5. **Commit changes** → 1-2 dakika içinde yazı sitede yayında.
 

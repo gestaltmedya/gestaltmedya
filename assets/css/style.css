@@ -404,8 +404,6 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
 .meta-i svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .byline { display: flex; flex-wrap: wrap; gap: 14px 30px; margin: 0 0 22px; }
 .byline-p { display: flex; align-items: center; gap: 12px; }
-.byline-p img, .byline-ring { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-strong); flex: none; }
-.byline-ring { background: radial-gradient(circle, rgba(139,92,255,.3), transparent 70%); box-shadow: 0 0 16px -4px rgba(0,240,255,.45); }
 .byline-name { margin: 0; font-family: var(--f-display); font-weight: 600; line-height: 1.2; color: var(--text); }
 .byline-role { margin: 2px 0 0; font-size: .85rem; color: var(--text-3); }
 .post-cover img { border-radius: calc(var(--radius) + 4px); border: 1px solid var(--line); width: 100%; }
