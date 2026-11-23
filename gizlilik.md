@@ -16,7 +16,7 @@ Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamınd
 
 - **Çerez kullanmıyoruz.** Reklam, takip ya da profil çıkarma amaçlı hiçbir çerez yok.
 - **Barındırma:** Site GitHub Pages (GitHub Inc., ABD) üzerinde yayınlanır. GitHub, güvenlik ve hizmetin çalışması için ziyaretçinin IP adresini teknik kayıtlarında tutabilir.
-- **Yazı tipleri:** Yazı tipleri Google Fonts'tan (Google LLC, ABD) yüklenir; bu sırada tarayıcın Google'a IP adresini iletir.
+- **Yazı tipleri:** Yazı tipleri sitenin kendi sunucusundan yüklenir; Google Fonts gibi üçüncü taraf bir servise bağlanılmaz.
 {% if site.goatcounter != "" %}- **Okunma istatistiği:** Hangi yazıların okunduğunu GoatCounter ile sayıyoruz. GoatCounter çerez kullanmaz, IP adresini saklamaz ve kişiyi tanımlayacak bilgi tutmaz.
 {% endif %}{% if site.youtube_videolar and site.youtube_videolar.size > 0 %}- **Videolar:** Ana sayfadaki videolar, sen oynat tuşuna basana kadar YouTube'a bağlanmaz (yalnızca kapak resmi yüklenir). Oynattığında YouTube'un çerezsiz (youtube-nocookie.com) oynatıcısı açılır.
 {% endif %}- **Dış bağlantılar:** Paylaşım butonları ve sosyal medya bağlantıları, sen tıklayana kadar o sitelere veri göndermez. Tıkladığında ilgili platformun kendi gizlilik kuralları geçerlidir.

@@ -86,6 +86,11 @@ Yazının ilk paragrafı buraya.
 Devamı...
 ```
 
+**Google için 3 kural (SEO):**
+- `description` 150–160 karakter olsun ve yazının asıl konusunu anlatan kelimeyi içersin. Google arama sonucunda bunu gösterir.
+- Başlıkta da o kelime geçsin; 60 karakteri aşmasın (fazlası aramada kesilir).
+- Yazı içine resim eklerken açıklama yaz: `![Gece neon tabelalı sokak](/assets/img/sokak.jpg)`. Köşeli parantezdeki metin (alt metin), görme engelli okuyucular ve Google Görseller içindir.
+
 **Kategori mi, etiket mi?** Kategori yazının ana rafıdır; her yazının tek kategorisi olur ve kartın rengi buradan gelir (Medya camgöbeği, Teknoloji mor, Kültür amber, Zihin limon). Etiketler serbesttir, istediğin kadar ekleyebilirsin. Kategorileri `_config.yml` → `kategoriler:` bölümünden değiştirebilirsin.
 
 **Kapak görseli:** Kartlarda görsel kategori rengine boyanır, üstüne gelince gerçek rengi görünür. Yazının kendi sayfasında görsel orijinal renginde durur. Görsel koymazsan kart kategori renginde desenli bir kapakla çıkar.
