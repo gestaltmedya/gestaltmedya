@@ -17,3 +17,10 @@ gestalt:
 #   bio: "Bir iki cümlelik kısa tanıtım."
 #   picture: "/assets/img/yazar-onur.jpg"
 #   instagram: "kullaniciadi"
+
+dilan:
+  name: "Dilan Gönül"
+  rol: "yazar"
+  bio: ""
+  picture: ""
+  instagram: "issuesandnotes"

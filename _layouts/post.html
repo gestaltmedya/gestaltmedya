@@ -24,7 +24,7 @@ body_class: post-page
     {% assign ed = site.data.authors[page.editor] %}
     <div class="byline">
       <div class="byline-p">
-        <div class="byline-p-text"><p class="byline-name">{% if aid == "gestalt" %}Gestalt Medya Yayın Ekibi{% else %}{{ au.name | default: aid }}{% endif %}</p><p class="byline-role">Yazar</p></div>
+        <div class="byline-p-text"><p class="byline-name">{% if aid == "gestalt" %}Gestalt Medya Yayın Ekibi{% else %}{{ au.name | default: aid }}{% endif %}{% if aid != "gestalt" and au.instagram %} <a class="byline-ig" href="https://www.instagram.com/{{ au.instagram }}/" target="_blank" rel="noopener">@{{ au.instagram }}</a>{% endif %}</p><p class="byline-role">Yazar</p></div>
       </div>
       {% if page.editor %}
       <div class="byline-p">

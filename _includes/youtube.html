@@ -1,0 +1,8 @@
+{% comment %} Yazı içine YouTube videosu: {% include youtube.html id="VIDEO_KODU" baslik="Videonun adı" %} {% endcomment %}
+<figure class="yt-item yt-inline">
+  <button class="yt-lite" type="button" data-id="{{ include.id }}" aria-label="Videoyu oynat: {{ include.baslik | default: 'YouTube videosu' | escape }}">
+    <img src="https://i.ytimg.com/vi/{{ include.id }}/hqdefault.jpg" alt="" loading="lazy">
+    <span class="yt-play" aria-hidden="true"></span>
+  </button>
+  {% if include.baslik %}<figcaption><span class="yt-name">{{ include.baslik }}</span></figcaption>{% endif %}
+</figure>

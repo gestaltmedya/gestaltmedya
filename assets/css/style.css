@@ -405,6 +405,8 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
 .byline { display: flex; flex-wrap: wrap; gap: 14px 30px; margin: 0 0 22px; }
 .byline-p { display: flex; align-items: center; gap: 12px; }
 .byline-name { margin: 0; font-family: var(--f-display); font-weight: 600; line-height: 1.2; color: var(--text); }
+.byline-ig { margin-left: 8px; font-family: var(--f-mono, "JetBrains Mono", monospace); font-size: .78rem; font-weight: 400; color: var(--cyan); text-decoration: none; opacity: .85; }
+.byline-ig:hover { opacity: 1; text-decoration: underline; }
 .byline-role { margin: 2px 0 0; font-size: .85rem; color: var(--text-3); }
 .post-cover img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; border-radius: calc(var(--radius) + 4px); border: 1px solid var(--line); }
 .divider { height: 1px; margin: 40px 0; background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent); opacity: .6; }
@@ -607,3 +609,8 @@ a.tag:hover, button.tag:hover { color: var(--magenta); border-color: var(--magen
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Yazı içi YouTube videosu (_includes/youtube.html) */
+.prose .yt-inline { margin: 2em 0; }
+.prose .yt-lite img { margin: 0; border: 0; border-radius: 0; max-width: none; }
+.prose .yt-inline figcaption { margin-top: 10px; font-size: .9rem; color: var(--text-2, #b9b5d9); }

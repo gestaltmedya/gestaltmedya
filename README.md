@@ -1,5 +1,7 @@
 # GESTALT MEDYA — web sitesi
 
+> Ayrıntılı kullanım kılavuzu (yazı, görsel, SEO, Search Console, sorun giderme): bilgisayardaki `Gestalt-Kullanim-Kilavuzu.pdf`. Bu README onun kısa özetidir.
+
 Cyberpunk / neon temalı, **tamamen ücretsiz** çalışan blog sitesi.
 
 - **Barındırma:** GitHub Pages (ücretsiz, sınırsız süre, otomatik HTTPS)
@@ -98,6 +100,8 @@ Devamı...
 **Yazar:** Yazmazsan yazı "Gestalt Medya" adına çıkar. Başka bir yazar için başa `author: kimlik` yaz (kimlikler `_data/authors.yml` içinde). Kimlik yerine doğrudan isim de yazabilirsin: `author: "Onur Avşar"`. Yazmazsan başlığın altında "Gestalt Medya Yayın Ekibi" görünür. İsteğe bağlı editör: `editor: "Ad Soyad"`.
 
 5. **Commit changes** → 1-2 dakika içinde yazı sitede yayında.
+
+**Yazı içine YouTube videosu:** kendi satırına `{% include youtube.html id="VIDEO_KODU" baslik="Videonun adı" %}` yaz. Kod, video adresindeki `watch?v=` sonrası kısımdır. YouTube'un verdiği iframe kodunu kullanma.
 
 **Görsel eklemek için:** `assets/img` klasörüne gir → **Add file → Upload files** ile görseli yükle, sonra yazıda
 `![açıklama](/assets/img/gorsel-adi.jpg)` şeklinde kullan. Görselleri yüklemeden önce [squoosh.app](https://squoosh.app) ile küçültmen siteyi hızlandırır.
